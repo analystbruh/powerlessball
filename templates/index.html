@@ -1,0 +1,77 @@
+{% extends "bootstrap/base.html" %}
+{% block title %} POWERLESSBALL {% endblock %}
+{% block content %}
+<div class="jumbotron">
+<div class="container">
+<h1>POWER<strong>LESS</strong><EM><span>BALL</span></EM></h1>
+<br>
+<h2>A Fake Lotto App</h2>
+</div>
+</div>
+<br>
+<div class="container">
+    <form>
+        <div class="form-group form-group-lg">
+            <label>Pick a number between 1 and 99...</label>
+            <input type="tel" class="form-control" name="pick" autofocus required>
+            <br>
+            {% if show %}
+            <div class="alert alert-danger">
+                {{empty_message}}
+            </div>
+            {% endif %}
+            <br>
+            <input type="hidden" name="counter" value="{{ counter }}">
+            <input type="hidden" name="wins" value="{{ wins }}">
+            <input type="submit" class="btn btn-success btn-lg" value="Pick 'em!">
+        </div>
+    </form>
+    <br>
+    {% if 0 < pick < 100 %}
+    <div class="alert alert-info">
+        <h3>
+        You picked {{ pick }}
+        <br>
+        <br>
+        {{ lotto_pick }} was drawn
+        </h3>
+    </div>
+    <br>
+    <div class="alert alert-{{alert_type}}">
+        <h3>
+        {{ result_message }}
+        </h3>
+    </div>
+    <br>
+    <div class="alert alert-info">
+        <h3>
+        You've played {{ counter }} times so far...
+        <br>
+        <br>
+        You've won {{ wins }} times.
+        </h3>
+    </div>
+    {% else %}
+    <br>
+    <br>
+    <br>
+    <br>
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form>
+        <input type="submit" class="btn btn-primary btn-lg" value="Reset">
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer>Developed by <a href="http://www.analystbruh.com">Analystbruh</a>,
+        powered by Python...obviously</footer>
+</div>
+{% endblock %}
